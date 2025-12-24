@@ -48,7 +48,6 @@ body{
   text-align:center;
   padding:40px 20px;
 }
-
 .profile{
   width:170px;height:170px;
   border-radius:50%;
@@ -70,7 +69,6 @@ body{
   border-radius:50%;
   background:conic-gradient(#00ffff,#0066ff,#00ffff);
   animation:spin 4s linear infinite;
-  z-index:1;
 }
 @keyframes spin{to{transform:rotate(360deg)}}
 
@@ -96,10 +94,6 @@ body{
   background:linear-gradient(90deg,#00ffff,#00ff99);
   color:#000;
 }
-.contact-btn{
-  background:linear-gradient(90deg,#ff00ff,#ff6600);
-  color:#000;
-}
 
 /* ABOUT */
 .about{
@@ -116,8 +110,6 @@ body{
   flex-direction:column;
   gap:14px;
 }
-
-/* TEXT-WIDTH BUTTONS */
 .items span{
   position:relative;
   display:inline-block;
@@ -126,7 +118,6 @@ body{
   border-radius:30px;
   font-weight:600;
   color:#fff;
-  background:transparent;
 }
 .items span::before{
   content:"";
@@ -137,11 +128,9 @@ body{
   animation:ring 3s linear infinite;
   z-index:-1;
 }
-@keyframes ring{
-  to{filter:hue-rotate(360deg);}
-}
+@keyframes ring{to{filter:hue-rotate(360deg);}}
 
-/* BIO BOX */
+/* BIO */
 .bio-box{
   margin-top:25px;
   padding:20px;
@@ -170,7 +159,6 @@ body{
   object-fit:cover;
   filter:brightness(0.6);
   cursor:pointer;
-  transition:.3s;
 }
 .photo-box img:hover{filter:brightness(1);}
 
@@ -189,15 +177,15 @@ body{
   max-height:90%;
 }
 
-/* CONTACT */
+/* CONTACT (ONLY ONE) */
 .contact{
   text-align:center;
-  padding:40px 20px;
+  padding:50px 20px;
 }
 .contact a{
   display:inline-block;
   padding:12px 28px;
-  background:linear-gradient(90deg,#00ffff,#00ff99);
+  background:linear-gradient(90deg,#ff00ff,#ff6600);
   color:#000;
   border-radius:30px;
   font-weight:700;
@@ -220,16 +208,13 @@ body{
 
 <section class="hero">
   <div class="profile">
-    <!-- GitHub me Fahad.jpg yahin se load hogi -->
     <img src="Fahad.jpg" alt="Technical Fahad">
   </div>
-
   <h1>TECHNICAL FAHAD</h1>
   <p>TECHNICAL EXPERT • SCRIPT MAKER • BOT MAKER • CYBER SPECIALIST</p>
 
   <div class="btns">
     <button class="btn demo-btn" onclick="document.getElementById('photos').scrollIntoView()">View Demo</button>
-    <button class="btn contact-btn" onclick="window.location.href='https://wa.me/923251138959'">Contact</button>
   </div>
 </section>
 
@@ -261,13 +246,13 @@ body{
 </div>
 
 <section class="contact" id="contact">
-  <a href="https://wa.me/923251138959">WhatsApp Me</a>
+  <a href="https://wa.me/923251138959">Contact on WhatsApp</a>
 </section>
 
 <script>
-const menu = document.getElementById('menu');
-const full = document.getElementById('full');
-const fullimg = document.getElementById('fullimg');
+const menu=document.getElementById('menu');
+const full=document.getElementById('full');
+const fullimg=document.getElementById('fullimg');
 
 function openMenu(){menu.classList.add('active')}
 function closeMenu(){menu.classList.remove('active')}
@@ -278,4 +263,4 @@ function openFull(src){
 </script>
 
 </body>
-  </html>
+</html>
