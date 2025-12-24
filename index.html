@@ -55,31 +55,46 @@ animation:menuBgAnim 6s linear infinite;transition:.4s;z-index:999;padding:30px;
 .items span:nth-child(4){--acol:#7CFF00;}
 .bio-box{margin-top:25px;padding:20px;border-radius:12px;border:2px solid #00ffff;}
 
-/* PHOTOS */
+/* PHOTOS SECTION */
 .photos{padding:60px 20px;max-width:900px;margin:auto;}
-.photo-box{margin:30px auto;width:85%;border-radius:18px;overflow:hidden;}
-.photo-box img{width:100%;height:360px;object-fit:cover;filter:brightness(0.6);cursor:pointer;}
-.photo-box img:hover{filter:brightness(1);}
+.photo-box{margin:30px auto;width:85%;border-radius:18px;overflow:hidden;position:relative;}
+.photo-overlay{position:relative;cursor:pointer;}
+.photo-overlay img{width:100%;height:360px;object-fit:cover;filter:brightness(0.5);transition:0.4s;}
+.photo-overlay:hover img{filter:brightness(0.6);}
+.overlay-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:22px;font-weight:700;text-shadow:2px 2px 5px #000;}
 
-/* FULLSCREEN */
-.fullscreen{position:fixed;inset:0;background:#000;display:none;justify-content:center;align-items:center;z-index:2000;}
+/* EXTRA BUTTONS BELOW PHOTOS */
+.extra-buttons{margin-top:30px;display:flex;flex-direction:column;gap:18px;align-items:flex-start;}
+.extra-btn{position:relative;padding:12px 24px;background:transparent;font-weight:600;border:none;cursor:pointer;overflow:hidden;border-radius:8px;}
+.extra-btn span{position:relative;color:var(--clr);}
+.extra-btn::before, .extra-btn::after, .extra-btn span::before, .extra-btn span::after{
+  content:"";position:absolute;background:linear-gradient(90deg,#ff00ff,#00ffff,#ffcc00,#ff00ff);}
+.extra-btn::before{top:0;left:0;width:100%;height:2px;} 
+.extra-btn::after{bottom:0;left:0;width:100%;height:2px;} 
+.extra-btn span::before{top:0;left:0;width:2px;height:100%;} 
+.extra-btn span::after{top:0;right:0;width:2px;height:100%;} 
+.extra-btn::before,.extra-btn::after,.extra-btn span::before,.extra-btn span::after{animation:sideRun 3s linear infinite;}
+
+/* FULLSCREEN PHOTO */
+.fullscreen{position:fixed;inset:0;background:#000;display:none;justify-content:center;align-items:center;z-index:2000;flex-direction:column;}
 .fullscreen img{max-width:90%;max-height:90%;}
+.fullscreen-back{position:absolute;top:20px;left:20px;font-size:28px;color:#fff;cursor:pointer;}
 
 /* CONTACT */
 .contact{text-align:center;padding:90px 20px 60px;}
 .contact-btn{position:relative;display:inline-block;padding:18px 36px;font-weight:700;font-size:18px;text-decoration:none;color:#000;border-radius:30px;overflow:hidden;background:linear-gradient(90deg,#ff00ff,#00ffff,#ffe066,#ff00ff);}
-/* Neon border all sides */
 .contact-btn::before, .contact-btn::after, .contact-btn span::before, .contact-btn span::after{
   content:"";position:absolute;background:linear-gradient(90deg,#ff00ff,#00ffff,#ffcc00,#ff00ff);}
-.contact-btn::before{top:0;left:0;width:100%;height:3px;} /* top */
-.contact-btn::after{bottom:0;left:0;width:100%;height:3px;} /* bottom */
-.contact-btn span::before{top:0;left:0;width:3px;height:100%;} /* left */
-.contact-btn span::after{top:0;right:0;width:3px;height:100%;} /* right */
+.contact-btn::before{top:0;left:0;width:100%;height:3px;} 
+.contact-btn::after{bottom:0;left:0;width:100%;height:3px;} 
+.contact-btn span::before{top:0;left:0;width:3px;height:100%;} 
+.contact-btn span::after{top:0;right:0;width:3px;height:100%;} 
 </style>
 </head>
 
 <body>
 
+<!-- MENU -->
 <div class="menu-btn" onclick="openMenu()">☰</div>
 <div class="menu" id="menu">
   <div class="back" onclick="closeMenu()">←</div>
@@ -89,6 +104,7 @@ animation:menuBgAnim 6s linear infinite;transition:.4s;z-index:999;padding:30px;
   <a href="#contact">Contact</a>
 </div>
 
+<!-- HERO -->
 <section class="hero">
   <div class="profile">
     <img src="Fahad.jpg">
@@ -101,6 +117,7 @@ animation:menuBgAnim 6s linear infinite;transition:.4s;z-index:999;padding:30px;
   </div>
 </section>
 
+<!-- ABOUT -->
 <section class="about" id="about">
   <h2>About</h2>
   <div class="items">
@@ -114,27 +131,44 @@ animation:menuBgAnim 6s linear infinite;transition:.4s;z-index:999;padding:30px;
   </div>
 </section>
 
+<!-- PHOTOS + EXTRA BUTTONS -->
 <section class="photos" id="photos">
   <div class="photo-box">
-    <img src="https://picsum.photos/900/600" onclick="openFull(this.src)">
+    <div class="photo-overlay" onclick="openFull('https://picsum.photos/900/600')">
+      <img src="https://picsum.photos/900/600">
+      <div class="overlay-text">See Demo</div>
+    </div>
+  </div>
+
+  <!-- NEW EXTRA BUTTONS BELOW PHOTOS -->
+  <div class="extra-buttons">
+    <button class="extra-btn"><span style="--clr:#00dfff;">MY TOOLKIT</span></button>
+    <button class="extra-btn"><span style="--clr:#00ff3c;">TELEGRAM BOT</span></button>
+    <button class="extra-btn"><span style="--clr:#ffe066;">YOUTUBE</span></button>
   </div>
 </section>
 
-<div class="fullscreen" id="full" onclick="this.style.display='none'">
+<!-- FULLSCREEN PHOTO -->
+<div class="fullscreen" id="full">
+  <div class="fullscreen-back" onclick="closeFull()">← Back</div>
   <img id="fullimg">
 </div>
 
+<!-- CONTACT -->
 <section class="contact" id="contact">
   <a href="https://wa.me/923251138959" class="contact-btn"><span></span>Contact</a>
 </section>
 
+<!-- SCRIPT -->
 <script>
 const menu=document.getElementById('menu');
-const full=document.getElementById('full');
-const fullimg=document.getElementById('fullimg');
 function openMenu(){menu.classList.add('active')}
 function closeMenu(){menu.classList.remove('active')}
+
+const full=document.getElementById('full');
+const fullimg=document.getElementById('fullimg');
 function openFull(src){full.style.display='flex';fullimg.src=src;}
+function closeFull(){full.style.display='none';}
 </script>
 
 </body>
