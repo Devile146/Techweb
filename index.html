@@ -48,6 +48,8 @@ body{
   text-align:center;
   padding:40px 20px;
 }
+
+/* PROFILE IMAGE */
 .profile{
   width:170px;height:170px;
   border-radius:50%;
@@ -67,12 +69,26 @@ body{
   position:absolute;
   inset:-6px;
   border-radius:50%;
-  background:conic-gradient(#00ffff,#0066ff,#00ffff);
+  background:conic-gradient(#00ffff,#0066ff,#ff00ff,#00ffff);
   animation:spin 4s linear infinite;
 }
 @keyframes spin{to{transform:rotate(360deg)}}
 
-.hero h1{font-size:34px;font-weight:700;}
+/* NAME ANIMATED */
+.hero h1{
+  font-size:34px;
+  font-weight:700;
+  background:linear-gradient(90deg,#00ffff,#ff00ff,#ffe066,#00ffff);
+  background-size:300% 300%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:nameFlow 6s linear infinite;
+}
+@keyframes nameFlow{
+  0%{background-position:0%}
+  100%{background-position:100%}
+}
+
 .hero p{
   margin-top:15px;
   max-width:520px;
@@ -82,17 +98,32 @@ body{
   -webkit-text-fill-color:transparent;
 }
 
-.btns{margin-top:25px;}
+/* BUTTONS (BLANK + NEON BORDER) */
+.btns{margin-top:28px;display:flex;gap:15px;flex-wrap:wrap;justify-content:center;}
+
 .btn{
-  padding:12px 24px;
-  border:none;
+  position:relative;
+  padding:12px 26px;
   border-radius:30px;
-  font-weight:700;
+  background:transparent;
+  color:#fff;
+  font-weight:600;
   cursor:pointer;
+  border:none;
 }
-.demo-btn{
-  background:linear-gradient(90deg,#00ffff,#00ff99);
-  color:#000;
+
+.btn::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:30px;
+  background:linear-gradient(90deg,#00ffff,#ff00ff,#00ff99,#00ffff);
+  animation:borderFlow 3s linear infinite;
+  z-index:-1;
+}
+
+@keyframes borderFlow{
+  to{filter:hue-rotate(360deg);}
 }
 
 /* ABOUT */
@@ -177,19 +208,28 @@ body{
   max-height:90%;
 }
 
-/* CONTACT (ONLY ONE) */
+/* WHATSAPP BUTTON */
 .contact{
   text-align:center;
   padding:50px 20px;
 }
 .contact a{
-  display:inline-block;
-  padding:12px 28px;
-  background:linear-gradient(90deg,#ff00ff,#ff6600);
-  color:#000;
+  position:relative;
+  padding:14px 30px;
   border-radius:30px;
-  font-weight:700;
+  background:transparent;
+  color:#fff;
+  font-weight:600;
   text-decoration:none;
+}
+.contact a::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:30px;
+  background:linear-gradient(90deg,#25D366,#00ffff,#25D366);
+  animation:borderFlow 3s linear infinite;
+  z-index:-1;
 }
 </style>
 </head>
@@ -203,18 +243,20 @@ body{
   <a href="#">Home</a>
   <a href="#about">About</a>
   <a href="#photos">Demo</a>
-  <a href="#contact">Contact</a>
+  <a href="#contact">WhatsApp</a>
 </div>
 
 <section class="hero">
   <div class="profile">
     <img src="Fahad.jpg" alt="Technical Fahad">
   </div>
+
   <h1>TECHNICAL FAHAD</h1>
   <p>TECHNICAL EXPERT • SCRIPT MAKER • BOT MAKER • CYBER SPECIALIST</p>
 
   <div class="btns">
-    <button class="btn demo-btn" onclick="document.getElementById('photos').scrollIntoView()">View Demo</button>
+    <button class="btn" onclick="document.getElementById('photos').scrollIntoView()">View Demo</button>
+    <button class="btn" onclick="window.location.href='https://wa.me/923251138959'">WhatsApp</button>
   </div>
 </section>
 
@@ -246,7 +288,7 @@ body{
 </div>
 
 <section class="contact" id="contact">
-  <a href="https://wa.me/923251138959">Contact on WhatsApp</a>
+  <a href="https://wa.me/923251138959">WhatsApp</a>
 </section>
 
 <script>
@@ -263,4 +305,4 @@ function openFull(src){
 </script>
 
 </body>
-</html>
+  </html>
