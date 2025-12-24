@@ -4,50 +4,38 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TECHNICAL FAHAD</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
 body{
-  margin:0;
-  padding:0;
-  min-height:100vh;
-  overflow-x:hidden;
-  background: linear-gradient(-45deg,#020024,#090979,#00d4ff,#020024);
-  background-size:400% 400%;
-  animation:bgAnimation 15s ease infinite;
+  background:linear-gradient(135deg,#020024,#0b3c5d,#020024);
   color:#fff;
-}
-@keyframes bgAnimation{
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
+  overflow-x:hidden;
 }
 
 /* MENU */
 .menu-btn{
-  position:fixed;top:20px;right:20px;z-index:1001;
-  font-size:30px;cursor:pointer;
+  position:fixed;top:20px;right:20px;
+  font-size:30px;cursor:pointer;z-index:1000;
 }
 .menu{
   position:fixed;top:0;right:-100%;
-  width:260px;height:100%;
-  background:rgba(0,0,0,0.95);
-  transition:0.4s;
-  padding:20px;
-  z-index:1000;
+  width:260px;height:100vh;
+  background:#020024;
+  transition:.4s;z-index:999;
+  padding:30px;
 }
 .menu.active{right:0;}
 .menu .back{
-  font-size:22px;
-  cursor:pointer;
-  margin-bottom:20px;
+  font-size:28px;cursor:pointer;margin-bottom:30px;
 }
 .menu a{
-  display:block;
-  padding:12px;
-  color:#fff;
+  display:block;color:#fff;
   text-decoration:none;
-  border-bottom:1px solid #333;
+  margin:15px 0;font-size:18px;
 }
 
 /* HERO */
@@ -55,110 +43,150 @@ body{
   min-height:100vh;
   display:flex;
   flex-direction:column;
-  align-items:center;
   justify-content:center;
+  align-items:center;
   text-align:center;
-  padding:20px;
+  padding:40px 20px;
 }
+
 .profile{
+  width:170px;height:170px;
+  border-radius:50%;
   position:relative;
-  width:160px;height:160px;
   margin-bottom:20px;
 }
-.hero-photo{
-  width:100%;height:100%;
+.profile img{
+  width:100%;
+  height:100%;
   border-radius:50%;
   object-fit:cover;
-  z-index:2;
   position:relative;
-  border:3px solid rgba(255,255,255,0.1);
+  z-index:2;
 }
-.neon-ring{
+.profile::before{
   content:"";
   position:absolute;
-  top:0;left:0;
-  width:100%;height:100%;
+  inset:-6px;
   border-radius:50%;
+  background:conic-gradient(#00ffff,#0066ff,#00ffff);
+  animation:spin 4s linear infinite;
   z-index:1;
-  box-shadow:0 0 10px #ff00ff,0 0 20px #00ffff,0 0 30px #ffff00;
-  animation:neonRing 2.5s linear infinite alternate;
 }
-@keyframes neonRing{
-  0%{box-shadow:0 0 8px #ff00ff,0 0 15px #00ffff,0 0 25px #ffff00;}
-  50%{box-shadow:0 0 15px #ff00ff,0 0 30px #00ffff,0 0 40px #ffff00;}
-  100%{box-shadow:0 0 8px #ff00ff,0 0 15px #00ffff,0 0 25px #ffff00;}
-}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-.hero h1{
-  font-size:42px;
-  font-weight:700;
-  background:linear-gradient(90deg,#0ff,#f0f,#ff0);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  animation:move 10s linear infinite;
-}
-@keyframes move{
-  0%{background-position:0%;}
-  100%{background-position:300%;}
-}
-
+.hero h1{font-size:34px;font-weight:700;}
 .hero p{
-  margin-top:40px;
-  font-weight:600;
-  background:linear-gradient(90deg,#ffff00,#00ff00);
+  margin-top:15px;
+  max-width:520px;
+  font-size:15px;
+  background:linear-gradient(90deg,#ffe066,#7CFF00);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
+}
+
+.btns{margin-top:25px;}
+.btn{
+  padding:12px 24px;
+  border:none;
+  border-radius:30px;
+  font-weight:700;
+  cursor:pointer;
+}
+.demo-btn{
+  background:linear-gradient(90deg,#00ffff,#00ff99);
+  color:#000;
+}
+.contact-btn{
+  background:linear-gradient(90deg,#ff00ff,#ff6600);
+  color:#000;
 }
 
 /* ABOUT */
 .about{
-  display:flex;
-  flex-direction:column;
-  padding:40px 20px;
+  padding:60px 20px;
+  max-width:1100px;
+  margin:auto;
 }
 .about h2{
-  color:#00bfff;
-  margin-bottom:15px;
+  color:#3fa9ff;
+  margin-bottom:20px;
 }
+.items{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+/* TEXT-WIDTH BUTTONS */
 .items span{
-  display:block;
-  margin:8px 0;
+  position:relative;
+  display:inline-block;
+  width:fit-content;
+  padding:12px 20px;
+  border-radius:30px;
   font-weight:600;
-  background:linear-gradient(90deg,#ff00ff,#00ffff,#ffff00);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+  color:#fff;
+  background:transparent;
 }
+.items span::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:30px;
+  background:linear-gradient(90deg,#00ffff,#ff00ff,#00ffff);
+  animation:ring 3s linear infinite;
+  z-index:-1;
+}
+@keyframes ring{
+  to{filter:hue-rotate(360deg);}
+}
+
+/* BIO BOX */
 .bio-box{
-  margin-top:20px;
+  margin-top:25px;
   padding:20px;
+  border-radius:15px;
   border:2px solid transparent;
-  border-radius:12px;
-  background:linear-gradient(#020024,#020024) padding-box,
-             linear-gradient(90deg,#ff00ff,#00ffff,#ffff00) border-box;
-  animation:borderMove 6s linear infinite;
-}
-@keyframes borderMove{
-  0%{filter:hue-rotate(0deg);}
-  100%{filter:hue-rotate(360deg);}
+  background:
+    linear-gradient(#020024,#020024) padding-box,
+    linear-gradient(90deg,#00ffff,#0066ff) border-box;
 }
 
 /* PHOTOS */
 .photos{
-  padding:40px 20px;
+  padding:60px 20px;
+  max-width:900px;
+  margin:auto;
 }
 .photo-box{
-  max-width:700px;
   margin:30px auto;
-  border-radius:15px;
+  width:85%;
+  border-radius:18px;
   overflow:hidden;
-  border:2px solid transparent;
-  background:linear-gradient(#000,#000) padding-box,
-             linear-gradient(90deg,#0ff,#f0f,#ff0) border-box;
 }
 .photo-box img{
   width:100%;
-  height:320px;
+  height:360px;
   object-fit:cover;
+  filter:brightness(0.6);
+  cursor:pointer;
+  transition:.3s;
+}
+.photo-box img:hover{filter:brightness(1);}
+
+/* FULLSCREEN */
+.fullscreen{
+  position:fixed;
+  inset:0;
+  background:#000;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:2000;
+}
+.fullscreen img{
+  max-width:90%;
+  max-height:90%;
 }
 
 /* CONTACT */
@@ -168,12 +196,12 @@ body{
 }
 .contact a{
   display:inline-block;
-  padding:12px 25px;
-  background:#25D366;
-  color:#fff;
-  text-decoration:none;
+  padding:12px 28px;
+  background:linear-gradient(90deg,#00ffff,#00ff99);
+  color:#000;
   border-radius:30px;
-  font-weight:600;
+  font-weight:700;
+  text-decoration:none;
 }
 </style>
 </head>
@@ -183,20 +211,26 @@ body{
 <div class="menu-btn" onclick="openMenu()">☰</div>
 
 <div class="menu" id="menu">
-  <div class="back" onclick="closeMenu()">⬅ Back</div>
-  <a href="#hero" onclick="closeMenu()">Home</a>
-  <a href="#about" onclick="closeMenu()">About</a>
-  <a href="#photos" onclick="closeMenu()">Demo</a>
-  <a href="#contact" onclick="closeMenu()">Contact</a>
+  <div class="back" onclick="closeMenu()">←</div>
+  <a href="#">Home</a>
+  <a href="#about">About</a>
+  <a href="#photos">Demo</a>
+  <a href="#contact">Contact</a>
 </div>
 
-<section class="hero" id="hero">
+<section class="hero">
   <div class="profile">
-    <img src="Fahad.jpg" alt="Fahad" class="hero-photo">
-    <div class="neon-ring"></div>
+    <!-- GitHub me Fahad.jpg yahin se load hogi -->
+    <img src="Fahad.jpg" alt="Technical Fahad">
   </div>
+
   <h1>TECHNICAL FAHAD</h1>
-  <p>TECHNICAL EXPERT · SCRIPT MAKER · BOT MAKER · CYBER SPECIALIST</p>
+  <p>TECHNICAL EXPERT • SCRIPT MAKER • BOT MAKER • CYBER SPECIALIST</p>
+
+  <div class="btns">
+    <button class="btn demo-btn" onclick="document.getElementById('photos').scrollIntoView()">View Demo</button>
+    <button class="btn contact-btn" onclick="window.location.href='https://wa.me/923251138959'">Contact</button>
+  </div>
 </section>
 
 <section class="about" id="about">
@@ -207,24 +241,41 @@ body{
     <span>BOT MAKER</span>
     <span>CYBER SPECIALIST</span>
   </div>
+
   <div class="bio-box">
-    Professional tech expert providing scripts, bots and automation solutions with modern & secure methods.
+    Professional developer providing scripts, automation bots and secure technical solutions.
   </div>
 </section>
 
 <section class="photos" id="photos">
-  <div class="photo-box"><img src="photo1.jpg"></div>
-  <div class="photo-box"><img src="photo2.jpg"></div>
+  <div class="photo-box">
+    <img src="https://picsum.photos/900/600" onclick="openFull(this.src)">
+  </div>
+  <div class="photo-box">
+    <img src="https://picsum.photos/901/600" onclick="openFull(this.src)">
+  </div>
 </section>
 
+<div class="fullscreen" id="full" onclick="this.style.display='none'">
+  <img id="fullimg">
+</div>
+
 <section class="contact" id="contact">
-  <a href="https://wa.me/923251138959" target="_blank">Contact on WhatsApp</a>
+  <a href="https://wa.me/923251138959">WhatsApp Me</a>
 </section>
 
 <script>
-function openMenu(){document.getElementById("menu").classList.add("active");}
-function closeMenu(){document.getElementById("menu").classList.remove("active");}
+const menu = document.getElementById('menu');
+const full = document.getElementById('full');
+const fullimg = document.getElementById('fullimg');
+
+function openMenu(){menu.classList.add('active')}
+function closeMenu(){menu.classList.remove('active')}
+function openFull(src){
+  full.style.display='flex';
+  fullimg.src=src;
+}
 </script>
 
 </body>
-</html>
+  </html>
