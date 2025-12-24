@@ -2,34 +2,41 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>TECHNICAL FAHAD</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- GOOGLE FONT -->
+<title>TECHNICAL FAHAD</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 body{
-  background:linear-gradient(120deg,#020024,#090979,#00d4ff);
-  color:#fff;
+  margin:0;
+  padding:0;
+  min-height:100vh;
   overflow-x:hidden;
+  background: linear-gradient(-45deg,#020024,#090979,#00d4ff,#020024);
+  background-size:400% 400%;
+  animation:bgAnimation 15s ease infinite;
+  color:#fff;
+}
+@keyframes bgAnimation{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
 }
 
 /* MENU */
 .menu-btn{
-  position:fixed;top:20px;right:20px;
-  font-size:30px;cursor:pointer;z-index:1001;
+  position:fixed;top:20px;right:20px;z-index:1001;
+  font-size:30px;cursor:pointer;
 }
 .menu{
   position:fixed;top:0;right:-100%;
   width:260px;height:100%;
-  background:#020024;
-  transition:.4s;
+  background:rgba(0,0,0,0.95);
+  transition:0.4s;
   padding:20px;
   z-index:1000;
 }
-.menu.active{right:0}
+.menu.active{right:0;}
 .menu .back{
   font-size:22px;
   cursor:pointer;
@@ -54,31 +61,33 @@ body{
   padding:20px;
 }
 .profile{
-  width:160px;height:160px;
   position:relative;
+  width:160px;height:160px;
   margin-bottom:20px;
 }
-.profile img{
+.hero-photo{
   width:100%;height:100%;
   border-radius:50%;
   object-fit:cover;
-  position:relative;
   z-index:2;
+  position:relative;
+  border:3px solid rgba(255,255,255,0.1);
 }
-.profile::after{
+.neon-ring{
   content:"";
-  position:absolute;top:0;left:0;
+  position:absolute;
+  top:0;left:0;
   width:100%;height:100%;
   border-radius:50%;
-  border:3px solid transparent;
-  background:linear-gradient(45deg,#ff00ff,#00ffff,#ffff00) border-box;
-  -webkit-mask:
-    linear-gradient(#fff 0 0) padding-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite:xor;
-  animation:spin 4s linear infinite;
+  z-index:1;
+  box-shadow:0 0 10px #ff00ff,0 0 20px #00ffff,0 0 30px #ffff00;
+  animation:neonRing 2.5s linear infinite alternate;
 }
-@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes neonRing{
+  0%{box-shadow:0 0 8px #ff00ff,0 0 15px #00ffff,0 0 25px #ffff00;}
+  50%{box-shadow:0 0 15px #ff00ff,0 0 30px #00ffff,0 0 40px #ffff00;}
+  100%{box-shadow:0 0 8px #ff00ff,0 0 15px #00ffff,0 0 25px #ffff00;}
+}
 
 .hero h1{
   font-size:42px;
@@ -89,8 +98,8 @@ body{
   animation:move 10s linear infinite;
 }
 @keyframes move{
-  0%{background-position:0%}
-  100%{background-position:300%}
+  0%{background-position:0%;}
+  100%{background-position:300%;}
 }
 
 .hero p{
@@ -104,13 +113,10 @@ body{
 /* ABOUT */
 .about{
   display:flex;
-  flex-wrap:wrap;
+  flex-direction:column;
   padding:40px 20px;
 }
-.about-left{
-  width:100%;
-}
-.about-left h2{
+.about h2{
   color:#00bfff;
   margin-bottom:15px;
 }
@@ -118,7 +124,7 @@ body{
   display:block;
   margin:8px 0;
   font-weight:600;
-  background:linear-gradient(90deg,#ff00ff,#00ffff);
+  background:linear-gradient(90deg,#ff00ff,#00ffff,#ffff00);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
@@ -127,14 +133,13 @@ body{
   padding:20px;
   border:2px solid transparent;
   border-radius:12px;
-  background:
-   linear-gradient(#020024,#020024) padding-box,
-   linear-gradient(90deg,#ff00ff,#00ffff,#ffff00) border-box;
+  background:linear-gradient(#020024,#020024) padding-box,
+             linear-gradient(90deg,#ff00ff,#00ffff,#ffff00) border-box;
   animation:borderMove 6s linear infinite;
 }
 @keyframes borderMove{
-  0%{filter:hue-rotate(0deg)}
-  100%{filter:hue-rotate(360deg)}
+  0%{filter:hue-rotate(0deg);}
+  100%{filter:hue-rotate(360deg);}
 }
 
 /* PHOTOS */
@@ -147,9 +152,8 @@ body{
   border-radius:15px;
   overflow:hidden;
   border:2px solid transparent;
-  background:
-   linear-gradient(#000,#000) padding-box,
-   linear-gradient(90deg,#0ff,#f0f,#ff0) border-box;
+  background:linear-gradient(#000,#000) padding-box,
+             linear-gradient(90deg,#0ff,#f0f,#ff0) border-box;
 }
 .photo-box img{
   width:100%;
@@ -176,10 +180,10 @@ body{
 
 <body>
 
-<div class="menu-btn" onclick="openMenu()"></div>
+<div class="menu-btn" onclick="openMenu()">â˜°</div>
 
 <div class="menu" id="menu">
-  <div class="back" onclick="closeMenu()"> Back</div>
+  <div class="back" onclick="closeMenu()">â¬… Back</div>
   <a href="#hero" onclick="closeMenu()">Home</a>
   <a href="#about" onclick="closeMenu()">About</a>
   <a href="#photos" onclick="closeMenu()">Demo</a>
@@ -188,24 +192,23 @@ body{
 
 <section class="hero" id="hero">
   <div class="profile">
-    <img src="Fahad.jpg" alt="Fahad">
+    <img src="Fahad.jpg" alt="Fahad" class="hero-photo">
+    <div class="neon-ring"></div>
   </div>
   <h1>TECHNICAL FAHAD</h1>
-  <p>TECHNICAL EXPERT · SCRIPT MAKER · BOT MAKER · CYBER SPECIALIST</p>
+  <p>TECHNICAL EXPERT Â· SCRIPT MAKER Â· BOT MAKER Â· CYBER SPECIALIST</p>
 </section>
 
 <section class="about" id="about">
-  <div class="about-left">
-    <h2>About</h2>
-    <div class="items">
-      <span>TECHNICAL EXPERT</span>
-      <span>SCRIPT MAKER</span>
-      <span>BOT MAKER</span>
-      <span>CYBER SPECIALIST</span>
-    </div>
-    <div class="bio-box">
-      Professional tech expert providing scripts, bots and automation solutions with modern & secure methods.
-    </div>
+  <h2>About</h2>
+  <div class="items">
+    <span>TECHNICAL EXPERT</span>
+    <span>SCRIPT MAKER</span>
+    <span>BOT MAKER</span>
+    <span>CYBER SPECIALIST</span>
+  </div>
+  <div class="bio-box">
+    Professional tech expert providing scripts, bots and automation solutions with modern & secure methods.
   </div>
 </section>
 
@@ -219,12 +222,8 @@ body{
 </section>
 
 <script>
-function openMenu(){
-  document.getElementById("menu").classList.add("active");
-}
-function closeMenu(){
-  document.getElementById("menu").classList.remove("active");
-}
+function openMenu(){document.getElementById("menu").classList.add("active");}
+function closeMenu(){document.getElementById("menu").classList.remove("active");}
 </script>
 
 </body>
