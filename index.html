@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TECHNICAL FAHAD</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{
+  background:linear-gradient(120deg,#020024,#090979,#00d4ff);
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* MENU */
+.menu-btn{
+  position:fixed;top:20px;right:20px;
+  font-size:30px;cursor:pointer;z-index:1001;
+}
+.menu{
+  position:fixed;top:0;right:-100%;
+  width:260px;height:100%;
+  background:#020024;
+  transition:.4s;
+  padding:20px;
+  z-index:1000;
+}
+.menu.active{right:0}
+.menu .back{
+  font-size:22px;
+  cursor:pointer;
+  margin-bottom:20px;
+}
+.menu a{
+  display:block;
+  padding:12px;
+  color:#fff;
+  text-decoration:none;
+  border-bottom:1px solid #333;
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
+}
+.profile{
+  width:160px;height:160px;
+  position:relative;
+  margin-bottom:20px;
+}
+.profile img{
+  width:100%;height:100%;
+  border-radius:50%;
+  object-fit:cover;
+  position:relative;
+  z-index:2;
+}
+.profile::after{
+  content:"";
+  position:absolute;top:0;left:0;
+  width:100%;height:100%;
+  border-radius:50%;
+  border:3px solid transparent;
+  background:linear-gradient(45deg,#ff00ff,#00ffff,#ffff00) border-box;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  animation:spin 4s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.hero h1{
+  font-size:42px;
+  font-weight:700;
+  background:linear-gradient(90deg,#0ff,#f0f,#ff0);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:move 10s linear infinite;
+}
+@keyframes move{
+  0%{background-position:0%}
+  100%{background-position:300%}
+}
+
+.hero p{
+  margin-top:40px;
+  font-weight:600;
+  background:linear-gradient(90deg,#ffff00,#00ff00);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* ABOUT */
+.about{
+  display:flex;
+  flex-wrap:wrap;
+  padding:40px 20px;
+}
+.about-left{
+  width:100%;
+}
+.about-left h2{
+  color:#00bfff;
+  margin-bottom:15px;
+}
+.items span{
+  display:block;
+  margin:8px 0;
+  font-weight:600;
+  background:linear-gradient(90deg,#ff00ff,#00ffff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.bio-box{
+  margin-top:20px;
+  padding:20px;
+  border:2px solid transparent;
+  border-radius:12px;
+  background:
+   linear-gradient(#020024,#020024) padding-box,
+   linear-gradient(90deg,#ff00ff,#00ffff,#ffff00) border-box;
+  animation:borderMove 6s linear infinite;
+}
+@keyframes borderMove{
+  0%{filter:hue-rotate(0deg)}
+  100%{filter:hue-rotate(360deg)}
+}
+
+/* PHOTOS */
+.photos{
+  padding:40px 20px;
+}
+.photo-box{
+  max-width:700px;
+  margin:30px auto;
+  border-radius:15px;
+  overflow:hidden;
+  border:2px solid transparent;
+  background:
+   linear-gradient(#000,#000) padding-box,
+   linear-gradient(90deg,#0ff,#f0f,#ff0) border-box;
+}
+.photo-box img{
+  width:100%;
+  height:320px;
+  object-fit:cover;
+}
+
+/* CONTACT */
+.contact{
+  text-align:center;
+  padding:40px 20px;
+}
+.contact a{
+  display:inline-block;
+  padding:12px 25px;
+  background:#25D366;
+  color:#fff;
+  text-decoration:none;
+  border-radius:30px;
+  font-weight:600;
+}
+</style>
+</head>
+
+<body>
+
+<div class="menu-btn" onclick="openMenu()"></div>
+
+<div class="menu" id="menu">
+  <div class="back" onclick="closeMenu()"> Back</div>
+  <a href="#hero" onclick="closeMenu()">Home</a>
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#photos" onclick="closeMenu()">Demo</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<section class="hero" id="hero">
+  <div class="profile">
+    <img src="Fahad.jpg" alt="Fahad">
+  </div>
+  <h1>TECHNICAL FAHAD</h1>
+  <p>TECHNICAL EXPERT · SCRIPT MAKER · BOT MAKER · CYBER SPECIALIST</p>
+</section>
+
+<section class="about" id="about">
+  <div class="about-left">
+    <h2>About</h2>
+    <div class="items">
+      <span>TECHNICAL EXPERT</span>
+      <span>SCRIPT MAKER</span>
+      <span>BOT MAKER</span>
+      <span>CYBER SPECIALIST</span>
+    </div>
+    <div class="bio-box">
+      Professional tech expert providing scripts, bots and automation solutions with modern & secure methods.
+    </div>
+  </div>
+</section>
+
+<section class="photos" id="photos">
+  <div class="photo-box"><img src="photo1.jpg"></div>
+  <div class="photo-box"><img src="photo2.jpg"></div>
+</section>
+
+<section class="contact" id="contact">
+  <a href="https://wa.me/923251138959" target="_blank">Contact on WhatsApp</a>
+</section>
+
+<script>
+function openMenu(){
+  document.getElementById("menu").classList.add("active");
+}
+function closeMenu(){
+  document.getElementById("menu").classList.remove("active");
+}
+</script>
+
+</body>
+</html>
