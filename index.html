@@ -12,9 +12,7 @@ body{background:linear-gradient(135deg,#020024,#0b3c5d,#020024);color:#fff;overf
 
 /* MENU */
 .menu-btn{position:fixed;top:20px;right:20px;font-size:30px;cursor:pointer;z-index:1000;}
-.menu{position:fixed;top:0;right:-100%;width:260px;height:100vh;
-background:linear-gradient(135deg,#020024,#001f3f,#003366,#0b3c5d);
-animation:menuBgAnim 6s linear infinite;transition:.4s;z-index:999;padding:30px;}
+.menu{position:fixed;top:0;right:-100%;width:260px;height:100vh;background:linear-gradient(135deg,#020024,#001f3f,#003366,#0b3c5d);animation:menuBgAnim 6s linear infinite;transition:.4s;z-index:999;padding:30px;}
 @keyframes menuBgAnim{0%{background:linear-gradient(135deg,#020024,#001f3f,#003366,#0b3c5d);}50%{background:linear-gradient(135deg,#0b3c5d,#003366,#001f3f,#020024);}100%{background:linear-gradient(135deg,#020024,#001f3f,#003366,#0b3c5d);}}
 .menu.active{right:0;}
 .menu .back{font-size:28px;cursor:pointer;margin-bottom:30px;}
@@ -27,7 +25,6 @@ animation:menuBgAnim 6s linear infinite;transition:.4s;z-index:999;padding:30px;
 .profile img{width:100%;height:100%;border-radius:50%;object-fit:cover;position:relative;z-index:2;}
 .profile::before{content:"";position:absolute;inset:-6px;border-radius:50%;background:conic-gradient(#00ffff,#0066ff,#ff00ff,#00ffff);animation:spin 4s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg)}}
-
 .hero h1{font-size:34px;font-weight:700;background:linear-gradient(90deg,#00ffff,#ff00ff,#ffe066,#00ffff);background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:nameFlow 6s linear infinite;}
 @keyframes nameFlow{0%{background-position:0%}100%{background-position:100%}}
 .hero p{margin-top:15px;max-width:520px;font-size:15px;background:linear-gradient(90deg,#ffe066,#7CFF00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
@@ -71,6 +68,11 @@ animation:menuBgAnim 6s linear infinite;transition:.4s;z-index:999;padding:30px;
 /* CONTACT */
 .contact{text-align:center;padding:90px 20px 60px;}
 .contact-btn{position:relative;display:inline-block;padding:18px 36px;font-weight:700;font-size:18px;text-decoration:none;color:#000;border-radius:30px;background:linear-gradient(90deg,#ff00ff,#00ffff,#ffe066,#ff00ff);}
+
+/* FULLSCREEN PHOTO */
+.fullscreen{position:fixed;inset:0;background:#000;display:none;justify-content:center;align-items:center;z-index:2000;flex-direction:column;}
+.fullscreen img{max-width:90%;max-height:90%;}
+.fullscreen-back{position:absolute;top:20px;left:20px;font-size:28px;color:#fff;cursor:pointer;}
 </style>
 </head>
 <body>
@@ -109,14 +111,14 @@ animation:menuBgAnim 6s linear infinite;transition:.4s;z-index:999;padding:30px;
 
 <section class="photos" id="photos">
   <div class="photo-box">
-    <!-- 1st Demo.jpg -->
-    <div class="photo-overlay" onclick="openFull('https://raw.githubusercontent.com/USERNAME/REPO_NAME/main/Demo.jpg')">
-      <img src="https://raw.githubusercontent.com/USERNAME/REPO_NAME/main/Demo.jpg">
+    <!-- Demo.jpg -->
+    <div class="photo-overlay" onclick="openFull('Demo.jpg')">
+      <img src="Demo.jpg">
       <div class="overlay-text">See Demo</div>
     </div>
-    <!-- 2nd Me.jpg -->
-    <div class="photo-overlay" onclick="openFull('https://raw.githubusercontent.com/USERNAME/REPO_NAME/main/Me.jpg')">
-      <img src="https://raw.githubusercontent.com/USERNAME/REPO_NAME/main/Me.jpg">
+    <!-- Me.jpg -->
+    <div class="photo-overlay" onclick="openFull('Me.jpg')">
+      <img src="Me.jpg">
       <div class="overlay-text">See Demo</div>
     </div>
   </div>
@@ -141,21 +143,23 @@ animation:menuBgAnim 6s linear infinite;transition:.4s;z-index:999;padding:30px;
   <a href="https://wa.me/923251138959" class="contact-btn">Contact</a>
 </section>
 
+<!-- Fullscreen Photo -->
+<div class="fullscreen" id="full">
+  <div class="fullscreen-back" onclick="closeFull()">← Back</div>
+  <img id="fullimg">
+</div>
+
 <script>
 const menu=document.getElementById('menu');
 function openMenu(){menu.classList.add('active')}
 function closeMenu(){menu.classList.remove('active')}
 
 // Fullscreen photo
-const full=document.createElement('div');
-full.id='full';
-full.className='fullscreen';
-full.style.cssText="position:fixed;inset:0;background:#000;display:none;justify-content:center;align-items:center;z-index:2000;flex-direction:column;";
-full.innerHTML='<div class="fullscreen-back" onclick="closeFull()" style="position:absolute;top:20px;left:20px;font-size:28px;color:#fff;cursor:pointer;">← Back</div><img id="fullimg" style="max-width:90%;max-height:90%">';
-document.body.appendChild(full);
+const full=document.getElementById('full');
 const fullimg=document.getElementById('fullimg');
 function openFull(src){full.style.display='flex';fullimg.src=src;}
 function closeFull(){full.style.display='none';}
 </script>
+
 </body>
-                                                                                                                  </html>
+</html>
